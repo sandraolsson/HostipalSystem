@@ -1,0 +1,28 @@
+package Server;
+
+public class Staff {
+	private String pNbr, name;
+	private int division;
+	private int level;
+	
+	public Staff(String name, String pNbr, int divison, int level){
+		this.name = name;
+		this.pNbr = pNbr;
+		this.division = division;
+		this.level = level;
+		
+	}
+	
+	public int getLevel(){	
+		return level;
+	}
+	public String getPnbr(){
+		return pNbr;
+	}
+	public int getDivision(){
+		return division;
+	}
+	public String getName(){
+		return name;
+	}
+}
