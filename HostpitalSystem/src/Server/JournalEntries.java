@@ -1,10 +1,16 @@
 package Server;
 
 public class JournalEntries {
-	private StringBuilder text;
+	private String text;
 	
-	public JournalEntries(){
-		text = new StringBuilder();
+	public JournalEntries(String text){
+		this.text = text;
 	}
-
+	
+	public void update(String newText){
+		text = newText;
+	}
+	public String getText(){
+		return text;
+	}
 }

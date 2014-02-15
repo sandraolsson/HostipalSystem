@@ -14,4 +14,18 @@ public class Patient {
 		journal = new ArrayList<JournalEntries>();
 		staff = new HashSet<String>();
 	}
+	public void addJournal(String text, String docPnbr, String nursePnbr){
+		journal.add(new JournalEntries(text));
+		staff.add(docPnbr);
+		staff.add(nursePnbr);
+	}
+	public String getPnbr(){
+		return pNbr;
+	}
+	public String getName(){
+		return name;
+	}
+	public boolean isTreatedBy(String pNbr){
+		return staff.contains(pNbr);
+	}
 }
