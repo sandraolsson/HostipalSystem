@@ -35,6 +35,6 @@ public class PatientList {
 		allPatient.remove(pNbr);
 	}
 	
-	public 
+	//TODO Write a update-method, if you want to update/edit a journal. This has to be implemented in some way.
 
 }
