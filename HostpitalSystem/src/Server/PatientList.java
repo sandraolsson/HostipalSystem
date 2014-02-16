@@ -1,6 +1,5 @@
 package Server;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class PatientList {
@@ -14,15 +13,28 @@ public class PatientList {
 		allPatient.put(p.getPnbr(), p);
 	}
 
-	public Patient getPatient(String patientPnbr) {
+	public PatientSender getPatient(String patientPnbr) {
+		PatientSender sender;
 		Patient p = allPatient.get(patientPnbr);
+		boolean read, delete, edit = false;
 		if (p == null)
-			return p;
-		if (p.isTreatedBy(CurrentUser.instance().getCurrentUserId()))
-			return p;
-		else {
 			return null;
+		if (p.isTreatedBy(CurrentUser.instance().getCurrentUserId()))
+			edit = read = true;
+		else {
+			read = CurrentUser.instance().getDivision().equals(p.getDivision());
 		}
+		delete = (CurrentUser.instance().getCurrentUserId()
+				.equals("1111111111"));
+
+		sender = new PatientSender(p, read, edit, delete);
+		return sender;
 	}
+
+	public void deletePatient(String pNbr) {
+		allPatient.remove(pNbr);
+	}
+	
+	public 
 
 }

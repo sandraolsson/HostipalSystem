@@ -17,13 +17,15 @@ public class CurrentUser {
     private String currentPnbr;
     
     private int currentLevel;
-        
+    
+    private String currentDivision;
     /**
      * Create a CurrentUser object.
      */
     private CurrentUser() {
         currentPnbr = null;
         currentLevel = 0;
+        currentDivision = null;
     }
         
     /**
@@ -61,13 +63,18 @@ public class CurrentUser {
      *
      * @param userId The user id of the new user.
      */
-    public void loginAs(String userId, int level) {
+    public void loginAs(String userId, int level, String division) {
         currentPnbr = userId;
         currentLevel = level;
+        currentDivision = division;
     }
     
-    public int getCurrentLevel(){
+    public int getLevel(){
     	return currentLevel == 0 ? 0 : currentLevel;
+    }
+    
+    public String getDivision(){
+    	return currentDivision;
     }
 }
    

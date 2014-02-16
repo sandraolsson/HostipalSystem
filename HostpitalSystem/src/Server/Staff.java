@@ -2,7 +2,7 @@ package Server;
 
 public class Staff {
 	private String pNbr, name;
-	private int division;
+	private String division;
 	private int level;
 	
 	public Staff(String name, String pNbr, int divison, int level){
@@ -19,7 +19,7 @@ public class Staff {
 	public String getPnbr(){
 		return pNbr;
 	}
-	public int getDivision(){
+	public String getDivision(){
 		return division;
 	}
 	public String getName(){
