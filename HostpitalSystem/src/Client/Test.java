@@ -7,3 +7,4 @@ private int knas;
 
 // Madde pa G
 }
+//latchaaarrrr
