@@ -25,4 +25,6 @@ public class Staff {
 	public String getName(){
 		return name;
 	}
-}
+} 
+
+/* detta ar helt fel*/
