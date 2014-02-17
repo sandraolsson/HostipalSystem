@@ -4,6 +4,7 @@ public class Staff {
 	private String pNbr, name;
 	private String division;
 	private int level;
+// Is level needed????
 	
 	public Staff(String name, String pNbr, int divison, int level){
 		this.name = name;

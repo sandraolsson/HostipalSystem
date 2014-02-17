@@ -19,7 +19,8 @@ public class PatientList {
 		boolean read, delete, edit = false;
 		if (p == null)
 			return null;
-		if (p.isTreatedBy(CurrentUser.instance().getCurrentUserId()))
+		if (p.
+				isTreatedBy(CurrentUser.instance().getCurrentUserId()))
 			edit = read = true;
 		else {
 			read = CurrentUser.instance().getDivision().equals(p.getDivision());
