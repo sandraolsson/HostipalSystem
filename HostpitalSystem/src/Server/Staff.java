@@ -4,7 +4,14 @@ public class Staff {
 	private String pNbr, name;
 	private String division;
 	private int level;
-// Is level needed????
+
+/*
+ * LVL 1 = GOV
+ * LVL 2 = DOC
+ * LVL 3 = NURSE
+ * LVL 4 = PATIENT
+ * 
+ */
 	
 	public Staff(String name, String pNbr, int divison, int level){
 		this.name = name;
