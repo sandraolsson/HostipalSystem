@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.SpringLayout;
 import javax.swing.JTextPane;
 import java.awt.SystemColor;
+import javax.swing.JLabel;
 
 public class LoginPatient extends JFrame {
 
@@ -76,6 +77,10 @@ public class LoginPatient extends JFrame {
 		sl_contentPane.putConstraint(SpringLayout.WEST, txtpnText, 0, SpringLayout.WEST, txtpnNamn);
 		txtpnText.setText("Text: ");
 		contentPane.add(txtpnText);
+		
+		JLabel lblTest = new JLabel("Test:");
+		sl_contentPane.putConstraint(SpringLayout.NORTH, lblTest, 15, SpringLayout.SOUTH, txtpnText);
+		sl_contentPane.putConstraint(SpringLayout.WEST, lblTest, 0, SpringLayout.WEST, txtpnNamn);
+		contentPane.add(lblTest);
 	}
-
 }
