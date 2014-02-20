@@ -10,7 +10,7 @@ public class PatientList {
 	}
 
 	public void addPatient(Patient p) {
-		if (CurrentUser.instance().getLevel() == 1) {
+		if (CurrentUser.instance().getLevel() == 2) {
 			allPatient.put(p.getPnbr(), p);
 		}
 	}
