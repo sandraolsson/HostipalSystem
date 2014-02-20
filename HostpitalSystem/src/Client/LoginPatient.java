@@ -43,44 +43,29 @@ public class LoginPatient extends JFrame {
 		SpringLayout sl_contentPane = new SpringLayout();
 		contentPane.setLayout(sl_contentPane);
 		
-		JTextPane txtpnNamn = new JTextPane();
-		txtpnNamn.setBackground(SystemColor.window);
-		txtpnNamn.setText("Namn: ");
-		sl_contentPane.putConstraint(SpringLayout.NORTH, txtpnNamn, 25, SpringLayout.NORTH, contentPane);
-		sl_contentPane.putConstraint(SpringLayout.WEST, txtpnNamn, 59, SpringLayout.WEST, contentPane);
-		contentPane.add(txtpnNamn);
+		JLabel lblNamn = new JLabel("Namn:");
+		sl_contentPane.putConstraint(SpringLayout.WEST, lblNamn, 59, SpringLayout.WEST, contentPane);
+		sl_contentPane.putConstraint(SpringLayout.SOUTH, lblNamn, -227, SpringLayout.SOUTH, contentPane);
+		contentPane.add(lblNamn);
 		
-		JTextPane txtpnPersonnummmer = new JTextPane();
-		txtpnPersonnummmer.setBackground(SystemColor.window);
-		sl_contentPane.putConstraint(SpringLayout.NORTH, txtpnPersonnummmer, 6, SpringLayout.SOUTH, txtpnNamn);
-		sl_contentPane.putConstraint(SpringLayout.WEST, txtpnPersonnummmer, 0, SpringLayout.WEST, txtpnNamn);
-		txtpnPersonnummmer.setText("Personnummmer:");
-		contentPane.add(txtpnPersonnummmer);
+		JLabel lblPersonnummer = new JLabel("Personnummer:");
+		sl_contentPane.putConstraint(SpringLayout.WEST, lblPersonnummer, 59, SpringLayout.WEST, contentPane);
+		contentPane.add(lblPersonnummer);
 		
-		JTextPane txtpnStaff = new JTextPane();
-		txtpnStaff.setBackground(SystemColor.window);
-		txtpnStaff.setText("Staff:");
-		sl_contentPane.putConstraint(SpringLayout.NORTH, txtpnStaff, 6, SpringLayout.SOUTH, txtpnPersonnummmer);
-		sl_contentPane.putConstraint(SpringLayout.WEST, txtpnStaff, 0, SpringLayout.WEST, txtpnNamn);
-		contentPane.add(txtpnStaff);
+		JLabel lblStaff = new JLabel("Staff:");
+		sl_contentPane.putConstraint(SpringLayout.NORTH, lblStaff, 69, SpringLayout.NORTH, contentPane);
+		sl_contentPane.putConstraint(SpringLayout.WEST, lblStaff, 59, SpringLayout.WEST, contentPane);
+		sl_contentPane.putConstraint(SpringLayout.SOUTH, lblPersonnummer, -6, SpringLayout.NORTH, lblStaff);
+		contentPane.add(lblStaff);
 		
-		JTextPane txtpnDivision = new JTextPane();
-		sl_contentPane.putConstraint(SpringLayout.NORTH, txtpnDivision, 6, SpringLayout.SOUTH, txtpnStaff);
-		sl_contentPane.putConstraint(SpringLayout.WEST, txtpnDivision, 0, SpringLayout.WEST, txtpnNamn);
-		txtpnDivision.setBackground(SystemColor.window);
-		txtpnDivision.setText("Division: ");
-		contentPane.add(txtpnDivision);
+		JLabel lblDivision = new JLabel("Division:");
+		sl_contentPane.putConstraint(SpringLayout.WEST, lblDivision, 59, SpringLayout.WEST, contentPane);
+		sl_contentPane.putConstraint(SpringLayout.NORTH, lblDivision, 6, SpringLayout.SOUTH, lblStaff);
+		contentPane.add(lblDivision);
 		
-		JTextPane txtpnText = new JTextPane();
-		txtpnText.setBackground(SystemColor.window);
-		sl_contentPane.putConstraint(SpringLayout.NORTH, txtpnText, 6, SpringLayout.SOUTH, txtpnDivision);
-		sl_contentPane.putConstraint(SpringLayout.WEST, txtpnText, 0, SpringLayout.WEST, txtpnNamn);
-		txtpnText.setText("Text: ");
-		contentPane.add(txtpnText);
-		
-		JLabel lblTest = new JLabel("Test:");
-		sl_contentPane.putConstraint(SpringLayout.NORTH, lblTest, 15, SpringLayout.SOUTH, txtpnText);
-		sl_contentPane.putConstraint(SpringLayout.WEST, lblTest, 0, SpringLayout.WEST, txtpnNamn);
-		contentPane.add(lblTest);
+		JLabel lblText = new JLabel("Text:");
+		sl_contentPane.putConstraint(SpringLayout.NORTH, lblText, 6, SpringLayout.SOUTH, lblDivision);
+		sl_contentPane.putConstraint(SpringLayout.WEST, lblText, 0, SpringLayout.WEST, lblNamn);
+		contentPane.add(lblText);
 	}
 }

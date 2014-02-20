@@ -11,6 +11,7 @@ import javax.swing.JTextPane;
 import java.awt.SystemColor;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 
 public class Patientfinnsej extends JFrame {
 
@@ -45,35 +46,31 @@ public class Patientfinnsej extends JFrame {
 		SpringLayout sl_contentPane = new SpringLayout();
 		contentPane.setLayout(sl_contentPane);
 		
-		JTextPane txtpnPatientenDuSkt = new JTextPane();
-		sl_contentPane.putConstraint(SpringLayout.NORTH, txtpnPatientenDuSkt, 10, SpringLayout.NORTH, contentPane);
-		sl_contentPane.putConstraint(SpringLayout.WEST, txtpnPatientenDuSkt, 124, SpringLayout.WEST, contentPane);
-		txtpnPatientenDuSkt.setBackground(SystemColor.window);
-		txtpnPatientenDuSkt.setText("Patienten du s\u00F6kt finns ej");
-		contentPane.add(txtpnPatientenDuSkt);
-		
-		JTextPane txtpnSkPNytt = new JTextPane();
-		sl_contentPane.putConstraint(SpringLayout.NORTH, txtpnSkPNytt, 84, SpringLayout.SOUTH, txtpnPatientenDuSkt);
-		sl_contentPane.putConstraint(SpringLayout.WEST, txtpnSkPNytt, 10, SpringLayout.WEST, contentPane);
-		txtpnSkPNytt.setBackground(SystemColor.window);
-		txtpnSkPNytt.setText("S\u00F6k p\u00E5 nytt personnummer:");
-		contentPane.add(txtpnSkPNytt);
-		
 		textField = new JTextField();
-		sl_contentPane.putConstraint(SpringLayout.WEST, textField, 20, SpringLayout.EAST, txtpnSkPNytt);
-		sl_contentPane.putConstraint(SpringLayout.SOUTH, textField, 0, SpringLayout.SOUTH, txtpnSkPNytt);
+		sl_contentPane.putConstraint(SpringLayout.WEST, textField, 204, SpringLayout.WEST, contentPane);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
 		JButton btnNewButton = new JButton("S\u00F6k");
-		sl_contentPane.putConstraint(SpringLayout.SOUTH, btnNewButton, 0, SpringLayout.SOUTH, txtpnSkPNytt);
+		sl_contentPane.putConstraint(SpringLayout.NORTH, btnNewButton, 97, SpringLayout.NORTH, contentPane);
 		sl_contentPane.putConstraint(SpringLayout.EAST, btnNewButton, -10, SpringLayout.EAST, contentPane);
 		contentPane.add(btnNewButton);
 		
 		JButton btnTillbaka = new JButton("Tillbaka");
+		sl_contentPane.putConstraint(SpringLayout.SOUTH, textField, -103, SpringLayout.NORTH, btnTillbaka);
 		sl_contentPane.putConstraint(SpringLayout.WEST, btnTillbaka, 154, SpringLayout.WEST, contentPane);
 		sl_contentPane.putConstraint(SpringLayout.SOUTH, btnTillbaka, -10, SpringLayout.SOUTH, contentPane);
 		contentPane.add(btnTillbaka);
+		
+		JLabel lblPatientenDuSkt = new JLabel("Patienten du s\u00F6kt p\u00E5 finns ej!");
+		sl_contentPane.putConstraint(SpringLayout.NORTH, lblPatientenDuSkt, 23, SpringLayout.NORTH, contentPane);
+		sl_contentPane.putConstraint(SpringLayout.WEST, lblPatientenDuSkt, 121, SpringLayout.WEST, contentPane);
+		contentPane.add(lblPatientenDuSkt);
+		
+		JLabel lblSkPNytt = new JLabel("S\u00F6k p\u00E5 nytt personnummer:");
+		sl_contentPane.putConstraint(SpringLayout.NORTH, lblSkPNytt, 6, SpringLayout.NORTH, textField);
+		sl_contentPane.putConstraint(SpringLayout.WEST, lblSkPNytt, 10, SpringLayout.WEST, contentPane);
+		contentPane.add(lblSkPNytt);
 	}
 
 }
