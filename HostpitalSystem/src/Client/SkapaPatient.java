@@ -11,6 +11,7 @@ import javax.swing.JTextPane;
 import java.awt.SystemColor;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 
 public class SkapaPatient extends JFrame {
 
@@ -49,38 +50,17 @@ public class SkapaPatient extends JFrame {
 		SpringLayout sl_contentPane = new SpringLayout();
 		contentPane.setLayout(sl_contentPane);
 		
-		JTextPane txtpnNamn = new JTextPane();
-		sl_contentPane.putConstraint(SpringLayout.WEST, txtpnNamn, 37, SpringLayout.WEST, contentPane);
-		txtpnNamn.setBackground(SystemColor.window);
-		txtpnNamn.setText("Namn: ");
-		contentPane.add(txtpnNamn);
-		
 		textField = new JTextField();
-		sl_contentPane.putConstraint(SpringLayout.WEST, textField, 83, SpringLayout.EAST, txtpnNamn);
-		sl_contentPane.putConstraint(SpringLayout.NORTH, txtpnNamn, 0, SpringLayout.NORTH, textField);
+		sl_contentPane.putConstraint(SpringLayout.WEST, textField, 165, SpringLayout.WEST, contentPane);
 		sl_contentPane.putConstraint(SpringLayout.NORTH, textField, 22, SpringLayout.NORTH, contentPane);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
-		JTextPane txtpnPersonnummer = new JTextPane();
-		txtpnPersonnummer.setBackground(SystemColor.window);
-		txtpnPersonnummer.setText("Personnummer:");
-		contentPane.add(txtpnPersonnummer);
-		
 		textField_1 = new JTextField();
-		sl_contentPane.putConstraint(SpringLayout.NORTH, txtpnPersonnummer, 0, SpringLayout.NORTH, textField_1);
-		sl_contentPane.putConstraint(SpringLayout.EAST, txtpnPersonnummer, -30, SpringLayout.WEST, textField_1);
 		sl_contentPane.putConstraint(SpringLayout.NORTH, textField_1, 7, SpringLayout.SOUTH, textField);
 		sl_contentPane.putConstraint(SpringLayout.WEST, textField_1, 0, SpringLayout.WEST, textField);
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
-		
-		JTextPane txtpnStaff = new JTextPane();
-		sl_contentPane.putConstraint(SpringLayout.NORTH, txtpnStaff, 17, SpringLayout.SOUTH, txtpnPersonnummer);
-		sl_contentPane.putConstraint(SpringLayout.WEST, txtpnStaff, 0, SpringLayout.WEST, txtpnNamn);
-		txtpnStaff.setBackground(SystemColor.window);
-		txtpnStaff.setText("Staff:");
-		contentPane.add(txtpnStaff);
 		
 		textField_2 = new JTextField();
 		sl_contentPane.putConstraint(SpringLayout.NORTH, textField_2, 6, SpringLayout.SOUTH, textField_1);
@@ -88,25 +68,11 @@ public class SkapaPatient extends JFrame {
 		contentPane.add(textField_2);
 		textField_2.setColumns(10);
 		
-		JTextPane txtpnDivision = new JTextPane();
-		sl_contentPane.putConstraint(SpringLayout.WEST, txtpnDivision, 0, SpringLayout.WEST, txtpnNamn);
-		txtpnDivision.setBackground(SystemColor.window);
-		txtpnDivision.setText("Division:");
-		contentPane.add(txtpnDivision);
-		
 		textField_3 = new JTextField();
-		sl_contentPane.putConstraint(SpringLayout.NORTH, txtpnDivision, 0, SpringLayout.NORTH, textField_3);
 		sl_contentPane.putConstraint(SpringLayout.NORTH, textField_3, 8, SpringLayout.SOUTH, textField_2);
 		sl_contentPane.putConstraint(SpringLayout.EAST, textField_3, 0, SpringLayout.EAST, textField);
 		contentPane.add(textField_3);
 		textField_3.setColumns(10);
-		
-		JTextPane txtpnText = new JTextPane();
-		txtpnText.setBackground(SystemColor.window);
-		txtpnText.setText("Text:");
-		sl_contentPane.putConstraint(SpringLayout.NORTH, txtpnText, 37, SpringLayout.SOUTH, txtpnDivision);
-		sl_contentPane.putConstraint(SpringLayout.WEST, txtpnText, 0, SpringLayout.WEST, txtpnNamn);
-		contentPane.add(txtpnText);
 		
 		textField_4 = new JTextField();
 		sl_contentPane.putConstraint(SpringLayout.NORTH, textField_4, 6, SpringLayout.SOUTH, textField_3);
@@ -125,6 +91,31 @@ public class SkapaPatient extends JFrame {
 		sl_contentPane.putConstraint(SpringLayout.NORTH, btnTillbaka, 6, SpringLayout.SOUTH, textField_4);
 		sl_contentPane.putConstraint(SpringLayout.EAST, btnTillbaka, -74, SpringLayout.EAST, contentPane);
 		contentPane.add(btnTillbaka);
+		
+		JLabel lblNamn = new JLabel("Namn:");
+		sl_contentPane.putConstraint(SpringLayout.WEST, lblNamn, 37, SpringLayout.WEST, contentPane);
+		sl_contentPane.putConstraint(SpringLayout.NORTH, lblNamn, 6, SpringLayout.NORTH, textField);
+		contentPane.add(lblNamn);
+		
+		JLabel lblPersonnummer = new JLabel("Personnummer:");
+		sl_contentPane.putConstraint(SpringLayout.NORTH, lblPersonnummer, 6, SpringLayout.NORTH, textField_1);
+		sl_contentPane.putConstraint(SpringLayout.WEST, lblPersonnummer, 37, SpringLayout.WEST, contentPane);
+		contentPane.add(lblPersonnummer);
+		
+		JLabel lblStaff = new JLabel("Staff:");
+		sl_contentPane.putConstraint(SpringLayout.WEST, lblStaff, 37, SpringLayout.WEST, contentPane);
+		sl_contentPane.putConstraint(SpringLayout.NORTH, lblStaff, 6, SpringLayout.NORTH, textField_2);
+		contentPane.add(lblStaff);
+		
+		JLabel lblDivision = new JLabel("Division:");
+		sl_contentPane.putConstraint(SpringLayout.NORTH, lblDivision, 6, SpringLayout.NORTH, textField_3);
+		sl_contentPane.putConstraint(SpringLayout.WEST, lblDivision, 37, SpringLayout.WEST, contentPane);
+		contentPane.add(lblDivision);
+		
+		JLabel lblText = new JLabel("Text:");
+		sl_contentPane.putConstraint(SpringLayout.NORTH, lblText, 23, SpringLayout.NORTH, textField_4);
+		sl_contentPane.putConstraint(SpringLayout.WEST, lblText, 0, SpringLayout.WEST, lblNamn);
+		contentPane.add(lblText);
 	}
 
 }

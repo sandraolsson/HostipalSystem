@@ -12,6 +12,7 @@ import java.awt.SystemColor;
 import javax.swing.JTextField;
 import java.awt.Font;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 
 public class Doctor extends JFrame {
 
@@ -47,15 +48,7 @@ public class Doctor extends JFrame {
 		SpringLayout sl_contentPane = new SpringLayout();
 		contentPane.setLayout(sl_contentPane);
 		
-		JTextPane txtpnSkPatient = new JTextPane();
-		sl_contentPane.putConstraint(SpringLayout.WEST, txtpnSkPatient, 77, SpringLayout.WEST, contentPane);
-		txtpnSkPatient.setBackground(SystemColor.window);
-		txtpnSkPatient.setText("S\u00F6k Patient:");
-		contentPane.add(txtpnSkPatient);
-		
 		textField_1 = new JTextField();
-		sl_contentPane.putConstraint(SpringLayout.NORTH, txtpnSkPatient, 0, SpringLayout.NORTH, textField_1);
-		sl_contentPane.putConstraint(SpringLayout.EAST, txtpnSkPatient, -57, SpringLayout.WEST, textField_1);
 		sl_contentPane.putConstraint(SpringLayout.NORTH, textField_1, 74, SpringLayout.NORTH, contentPane);
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
@@ -71,6 +64,11 @@ public class Doctor extends JFrame {
 		sl_contentPane.putConstraint(SpringLayout.NORTH, btnNewButton_1, 0, SpringLayout.NORTH, btnNewButton);
 		sl_contentPane.putConstraint(SpringLayout.WEST, btnNewButton_1, 40, SpringLayout.EAST, btnNewButton);
 		contentPane.add(btnNewButton_1);
+		
+		JLabel lblSkPatient = new JLabel("S\u00F6k Patient:");
+		sl_contentPane.putConstraint(SpringLayout.NORTH, lblSkPatient, 6, SpringLayout.NORTH, textField_1);
+		sl_contentPane.putConstraint(SpringLayout.EAST, lblSkPatient, 0, SpringLayout.EAST, btnNewButton);
+		contentPane.add(lblSkPatient);
 		
 		
 		

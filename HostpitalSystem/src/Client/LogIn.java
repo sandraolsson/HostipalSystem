@@ -18,6 +18,7 @@ import javax.swing.JTextPane;
 import java.awt.Color;
 import javax.swing.DropMode;
 import javax.swing.SpringLayout;
+import javax.swing.JLabel;
 
 public class LogIn extends JFrame {
 
@@ -25,9 +26,10 @@ public class LogIn extends JFrame {
 	private JPasswordField passwordField;
 	private JTextField textField;
 	private JTextField textField_1;
-	private JTextPane txtpnAnvndarnamn;
 	private JTextField textField_2;
 	private JTextField textField_3;
+	private JLabel lblAnvndarnamn;
+	private JLabel lblLsenord;
 
 	/**
 	 * Launch the application.
@@ -58,13 +60,6 @@ public class LogIn extends JFrame {
 		SpringLayout sl_contentPane = new SpringLayout();
 		contentPane.setLayout(sl_contentPane);
 		
-		txtpnAnvndarnamn = new JTextPane();
-		sl_contentPane.putConstraint(SpringLayout.NORTH, txtpnAnvndarnamn, 16, SpringLayout.NORTH, contentPane);
-		sl_contentPane.putConstraint(SpringLayout.WEST, txtpnAnvndarnamn, 60, SpringLayout.WEST, contentPane);
-		txtpnAnvndarnamn.setBackground(Color.LIGHT_GRAY);
-		txtpnAnvndarnamn.setText("Anv\u00E4ndarnamn:");
-		contentPane.add(txtpnAnvndarnamn);
-		
 		textField_2 = new JTextField();
 		sl_contentPane.putConstraint(SpringLayout.NORTH, textField_2, 10, SpringLayout.NORTH, contentPane);
 		sl_contentPane.putConstraint(SpringLayout.WEST, textField_2, 163, SpringLayout.WEST, contentPane);
@@ -78,18 +73,21 @@ public class LogIn extends JFrame {
 		sl_contentPane.putConstraint(SpringLayout.SOUTH, btnNewButton, -10, SpringLayout.SOUTH, contentPane);
 		contentPane.add(btnNewButton);
 		
-		JTextPane txtpnLsenord_1 = new JTextPane();
-		txtpnLsenord_1.setBackground(Color.LIGHT_GRAY);
-		txtpnLsenord_1.setText("L\u00F6senord:");
-		sl_contentPane.putConstraint(SpringLayout.NORTH, txtpnLsenord_1, 19, SpringLayout.SOUTH, txtpnAnvndarnamn);
-		sl_contentPane.putConstraint(SpringLayout.WEST, txtpnLsenord_1, 0, SpringLayout.WEST, txtpnAnvndarnamn);
-		contentPane.add(txtpnLsenord_1);
-		
 		textField_3 = new JTextField();
-		sl_contentPane.putConstraint(SpringLayout.SOUTH, textField_3, 0, SpringLayout.SOUTH, txtpnLsenord_1);
+		sl_contentPane.putConstraint(SpringLayout.NORTH, textField_3, 1, SpringLayout.SOUTH, textField_2);
 		sl_contentPane.putConstraint(SpringLayout.EAST, textField_3, 0, SpringLayout.EAST, textField_2);
 		contentPane.add(textField_3);
 		textField_3.setColumns(10);
+		
+		lblAnvndarnamn = new JLabel("Anv\u00E4ndarnamn:");
+		sl_contentPane.putConstraint(SpringLayout.WEST, lblAnvndarnamn, 60, SpringLayout.WEST, contentPane);
+		sl_contentPane.putConstraint(SpringLayout.NORTH, lblAnvndarnamn, 6, SpringLayout.NORTH, textField_2);
+		contentPane.add(lblAnvndarnamn);
+		
+		lblLsenord = new JLabel("L\u00F6senord:");
+		sl_contentPane.putConstraint(SpringLayout.NORTH, lblLsenord, 6, SpringLayout.NORTH, textField_3);
+		sl_contentPane.putConstraint(SpringLayout.WEST, lblLsenord, 0, SpringLayout.WEST, lblAnvndarnamn);
+		contentPane.add(lblLsenord);
 		
 	
 		
