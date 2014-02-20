@@ -18,14 +18,14 @@ import javax.swing.JTextPane;
 import java.awt.Color;
 import javax.swing.DropMode;
 import javax.swing.SpringLayout;
-<<<<<<< HEAD
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-=======
+
 import javax.swing.JLabel;
->>>>>>> d88abf129c00c2f06867e1a5a5c794e342164db0
+
 
 public class LogIn extends JFrame {
 
