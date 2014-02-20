@@ -22,10 +22,10 @@ public class PatientList {
 		read = delete = edit = false;
 		if (p == null)
 			return null;
-		if (p.isTreatedBy(CurrentUser.instance().getCurrentUserId()))
+		if (p.isTreatedBy(CurrentUser.instance().getPnbr()))
 			edit = read = true;
 		else if (CurrentUser.instance().getDivision().equals(p.getDivision())
-				|| CurrentUser.instance().getCurrentUserId() == p.getPnbr()) {
+				|| CurrentUser.instance().getPnbr() == p.getPnbr()) {
 			read = true;
 		}
 		delete = (CurrentUser.instance().getLevel() == 1);
@@ -37,6 +37,13 @@ public class PatientList {
 	public void deletePatient(String pNbr) {
 		if (CurrentUser.instance().getLevel() == 1)
 			allPatient.remove(pNbr);
+	}
+	public boolean update(Patient p){
+		if(p.isTreatedBy(CurrentUser.instance().getPnbr())){
+			allPatient.put(p.getPnbr(), p);
+			return true;
+		}
+		return false;
 	}
 
 	// TODO Write a update-method, if you want to update/edit a journal. This

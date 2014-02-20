@@ -32,4 +32,7 @@ public class Patient {
 	public boolean isTreatedBy(String pNbr){
 		return staff.contains(pNbr);
 	}
+	public void updateJournal(int index, String newtext){
+		journal.get(index).update(newtext);
+	}
 }

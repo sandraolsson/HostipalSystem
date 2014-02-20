@@ -1,10 +1,18 @@
 package Server;
 
 public class PatientSender {
+	String order;
+	String parameter;
 	private Patient patient;
 	boolean read;
 	boolean edit;
 	boolean delete;
+	
+	public PatientSender(String order, String parameter, Patient p){
+		this.order = order;
+		this.parameter = parameter;
+		this.patient = p;
+	}
 	
 	public PatientSender(Patient in, boolean read, boolean edit, boolean delete){
 		patient = in;

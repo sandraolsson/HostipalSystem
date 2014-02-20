@@ -54,7 +54,7 @@ public class CurrentUser {
      *
      * @return The user id of the current user.
      */
-    public String getCurrentUserId() {
+    public String getPnbr() {
         return currentPnbr == null ? "<none>" : currentPnbr;
     }
         
