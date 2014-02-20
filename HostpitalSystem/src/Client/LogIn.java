@@ -18,6 +18,10 @@ import javax.swing.JTextPane;
 import java.awt.Color;
 import javax.swing.DropMode;
 import javax.swing.SpringLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class LogIn extends JFrame {
 
@@ -74,6 +78,15 @@ public class LogIn extends JFrame {
 
 		
 		JButton btnNewButton = new JButton("Log In");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+		});
 		sl_contentPane.putConstraint(SpringLayout.WEST, btnNewButton, 0, SpringLayout.WEST, textField_2);
 		sl_contentPane.putConstraint(SpringLayout.SOUTH, btnNewButton, -10, SpringLayout.SOUTH, contentPane);
 		contentPane.add(btnNewButton);
