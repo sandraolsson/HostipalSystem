@@ -5,7 +5,6 @@ public class Staff {
 	private String division;
 	private int level;
 
-	// Even one more GITTRY
 /*
  * LVL 1 = GOV
  * LVL 2 = DOC
