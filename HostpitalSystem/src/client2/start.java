@@ -27,7 +27,7 @@ UserAndPasswordCorrect= true;
 //if(PN.equals(staff.get.pNbr())){
 	// if password is correct then:
 //	 level = Staff.getLevel(PN);
-	level = 3;
+	level = 4;
 	
 		if (level==1 /*GOV*/){
 		
