@@ -7,6 +7,7 @@ public class ServerParser {
 		this.list = list;
 	}
 
+	
 	public String parse(String in) {
 		String input[] = in.split(":");
 
