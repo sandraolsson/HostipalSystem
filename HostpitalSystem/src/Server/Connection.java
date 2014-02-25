@@ -138,18 +138,19 @@ public class Connection implements Runnable {
 				int returnVal = fc.showOpenDialog(null);
 				File keystore = fc.getSelectedFile();
 				String path = keystore.getAbsolutePath();
+				String path2 = path.replaceFirst("keystore", "truststore");
 				System.out.println("Choosen path for KeyStore = " + path);
-
+				System.out.println("Choosen path for TrustStore = " + path2);
 				ks.load(new FileInputStream(path), password); // keystore
 																// password
 																// (storepass)
 
-				JFileChooser fc2 = new JFileChooser();
-				fc2.setDialogTitle("Choose Truststore to use");
-				int returnVal2 = fc2.showOpenDialog(null);
-				File truststore = fc2.getSelectedFile();
-				String path2 = truststore.getAbsolutePath();
-				System.out.println("Choosen path for truststore = " + path);
+//				JFileChooser fc2 = new JFileChooser();
+//				fc2.setDialogTitle("Choose Truststore to use");
+//				int returnVal2 = fc2.showOpenDialog(null);
+//				File truststore = fc2.getSelectedFile();
+//				String path2 = truststore.getAbsolutePath();
+//				System.out.println("Choosen path for truststore = " + path);
 				ts.load(new FileInputStream(path2), password); // truststore
 																// password
 																// (storepass)
