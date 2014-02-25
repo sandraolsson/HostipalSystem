@@ -52,7 +52,9 @@ public static void main(String[] args) {
 		System.out.println(Path2);
 		String Path3 = Path2.replaceFirst("truststore", "keystore");
 		System.out.println(Path3);
-		
+		if( PW == Path3){
+			
+		}
 	}
 	
 //	JFileChooser fc = new JFileChooser();
@@ -74,8 +76,7 @@ public static void main(String[] args) {
 UserAndPasswordCorrect= true;
 
 	if( UserAndPasswordCorrect){
-//if(PN.equals(staff.get.pNbr())){
-	// if password is correct then:
+
 //	 level = Staff.getLevel(PN);
 	level = 2;
 	
