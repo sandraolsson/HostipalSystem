@@ -47,12 +47,15 @@ public static void main(String[] args) {
 		NameDir = fc.getCurrentDirectory();
 		NamePath = fc.getSelectedFile();
 		
-		PW = JOptionPane.showInputDialog( "Passward");
+		PW = JOptionPane.showInputDialog( "Password");
 		String Path2 = NamePath.getAbsolutePath();
 		System.out.println(Path2);
 		String Path3 = Path2.replaceFirst("truststore", "keystore");
 		System.out.println(Path3);
+		// check that check the Path3 against password.
 		
+	}else {
+		JOptionPane.showMessageDialog(null, "You have cancel the login", "Exit", JOptionPane.WARNING_MESSAGE); 
 	}
 	
 //	JFileChooser fc = new JFileChooser();
