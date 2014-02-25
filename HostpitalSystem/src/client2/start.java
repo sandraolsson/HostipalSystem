@@ -1,8 +1,19 @@
 package client2;
 
+import java.io.File;
 import java.util.Scanner;
 import javax.swing.*;
-import Server.JournalEntries;
+//import Server.JournalEntries;
+
+
+import java.io.*;
+import java.net.*;
+import java.security.KeyStore;
+
+import javax.net.*;
+import javax.net.ssl.*;
+import javax.security.cert.X509Certificate;
+import javax.swing.JFileChooser;
 
 public class start {
 	
@@ -22,8 +33,17 @@ public static void main(String[] args) {
 	Scanner scan = new Scanner(System.in);	
 
 	JOptionPane.showMessageDialog(null, "Press OK for Login"); 
-	PN = JOptionPane.showInputDialog( "Personalnumber");
-	PW = JOptionPane.showInputDialog( "Password");	
+	
+//PN = JOptionPane.showInputDialog( "Personalnumber");
+	
+	JFileChooser fc = new JFileChooser();
+	fc.setDialogTitle("Choose Truststore to use");
+	int returnVal2 = fc.showOpenDialog(null);
+	File truststore = fc.getSelectedFile();
+	String path2 = truststore.getAbsolutePath();
+	
+	
+	//PW = JOptionPane.showInputDialog( "Password");	
 	
 UserAndPasswordCorrect= true;
 
