@@ -3,27 +3,20 @@ package Server;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-public class Patient implements java.io.Serializable{
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	/**
-	 * 
-	 */
+public class PatientBackup {
 	private String pNbr, name, division;
-	private Journal journal;
+	private ArrayList<JournalEntries> journal;
 	private HashSet<String> staff;
 	
-	public Patient(String pnbr, String name, String division){
+	public PatientBackup(String pnbr, String name, String division){
 		this.pNbr = pnbr;
 		this.name = name;
 		this.division = division;
-		this.journal = new Journal();
+		journal = new ArrayList<JournalEntries>();
 		staff = new HashSet<String>();
 	}
 	public void addJournal(String text, String docPnbr, String nursePnbr){
-		journal.update(text);
+		journal.add(new JournalEntries(text));
 		staff.add(docPnbr);
 		staff.add(nursePnbr);
 	}
@@ -39,10 +32,7 @@ public class Patient implements java.io.Serializable{
 	public boolean isTreatedBy(String pNbr){
 		return staff.contains(pNbr);
 	}
-	public void updateJournal(String newtext){
-		journal.update(newtext);
-	}
-	public Journal getJournal(){
-		return journal;
+	public void updateJournal(int index, String newtext){
+		journal.get(index).update(newtext);
 	}
 }

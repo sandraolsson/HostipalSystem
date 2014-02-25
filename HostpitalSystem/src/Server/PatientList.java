@@ -2,7 +2,11 @@ package Server;
 
 import java.util.HashMap;
 
-public class PatientList {
+public class PatientList implements java.io.Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	HashMap<String, Patient> allPatient;
 
 	public PatientList() {
@@ -38,15 +42,20 @@ public class PatientList {
 		if (CurrentUser.instance().getLevel() == 1)
 			allPatient.remove(pNbr);
 	}
-	public boolean update(Patient p){
-		if(p.isTreatedBy(CurrentUser.instance().getPnbr())){
+
+	public boolean update(Patient p) {
+		if (p.isTreatedBy(CurrentUser.instance().getPnbr())) {
 			allPatient.put(p.getPnbr(), p);
 			return true;
 		}
 		return false;
 	}
 
-	// TODO Write a update-method, if you want to update/edit a journal. This
-	// has to be implemented in some way.
-
+	public void newJournal(String patientPnbr, String text, String docPnbr,
+			String nursePnbr) {
+		Patient p = allPatient.get(patientPnbr);
+		if (p.isTreatedBy(CurrentUser.instance().getPnbr())) {
+			p.addJournal(text, docPnbr, nursePnbr);
+		}
+	}
 }

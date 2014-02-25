@@ -20,6 +20,38 @@ public class Connection implements Runnable {
 
 	public void run() {
 		try {
+			// Here should the user choose a file with JFilechooser of the
+			// PatientList;
+			
+			System.out.println("Now we want you to choose you saved PatientList");
+			PatientList plist = null;
+			JFileChooser pfc = new JFileChooser();
+			pfc.setDialogTitle("Choose your saved PatientList");
+			int returnVal2 = pfc.showOpenDialog(null);
+			File Patlist = pfc.getSelectedFile();
+			String patPath = Patlist.getAbsolutePath();
+			
+		      try
+		      {
+		         FileInputStream fileIn = new FileInputStream(patPath);
+		         ObjectInputStream in = new ObjectInputStream(fileIn);
+		         plist = (PatientList) in.readObject();
+		         in.close();
+		         fileIn.close();
+		      }catch(IOException i)
+		      {
+		         i.printStackTrace();
+		         return;
+		      }catch(ClassNotFoundException c)
+		      {
+		         System.out.println("Employee class not found");
+		         c.printStackTrace();
+		         return;
+		      }
+			
+			
+			
+
 			SSLSocket socket = (SSLSocket) serverSocket.accept();
 			newListener();
 			SSLSession session = socket.getSession();
@@ -39,12 +71,13 @@ public class Connection implements Runnable {
 			in = new BufferedReader(new InputStreamReader(
 					socket.getInputStream()));
 
+			ServerParser serverParser = new ServerParser(plist);
+
 			String clientMsg = null;
 			while ((clientMsg = in.readLine()) != null) {
-				String rev = new StringBuilder(clientMsg).reverse().toString();
-				System.out.println("received '" + clientMsg + "' from client");
-				System.out.print("sending '" + rev + "' to client...");
-				out.println(rev);
+				String toSend = serverParser.parse(clientMsg);
+
+				out.println(toSend);
 				out.flush();
 				System.out.println("done\n");
 			}
@@ -67,10 +100,10 @@ public class Connection implements Runnable {
 	} // calls run()
 
 	public static void main(String args[]) {
+
 		System.out.println("\nServer Started\n");
 		// int port = -1;
-		// Just picked a random port.
-		int port = 4000;
+		int port = 5000;
 		if (args.length >= 1) {
 			port = Integer.parseInt(args[0]);
 		}
@@ -100,26 +133,26 @@ public class Connection implements Runnable {
 				KeyStore ts = KeyStore.getInstance("JKS");
 				char[] password = "password".toCharArray();
 
-				// Starts experiment
-
 				JFileChooser fc = new JFileChooser();
+				fc.setDialogTitle("Choose Keystore to use");
 				int returnVal = fc.showOpenDialog(null);
 				File keystore = fc.getSelectedFile();
 				String path = keystore.getAbsolutePath();
-				System.out.println("Choosen path = " + path);
-
-				// Stop experiment
+				System.out.println("Choosen path for KeyStore = " + path);
 
 				ks.load(new FileInputStream(path), password); // keystore
 																// password
-				JFileChooser fc2 = new JFileChooser(); // (storepass)
+																// (storepass)
+
+				JFileChooser fc2 = new JFileChooser();
+				fc2.setDialogTitle("Choose Truststore to use");
 				int returnVal2 = fc2.showOpenDialog(null);
 				File truststore = fc2.getSelectedFile();
 				String path2 = truststore.getAbsolutePath();
-
-				ts.load(new FileInputStream(truststore), password); // truststore
-				// password
-				// (storepass)
+				System.out.println("Choosen path for truststore = " + path);
+				ts.load(new FileInputStream(path2), password); // truststore
+																// password
+																// (storepass)
 				kmf.init(ks, password); // certificate password (keypass)
 				tmf.init(ts); // possible to use keystore as truststore here
 				ctx.init(kmf.getKeyManagers(), tmf.getTrustManagers(), null);
@@ -133,4 +166,5 @@ public class Connection implements Runnable {
 		}
 		return null;
 	}
+
 }
