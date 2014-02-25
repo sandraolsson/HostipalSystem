@@ -1,10 +1,10 @@
 package client2;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.util.Scanner;
-import javax.swing.*;
-//import Server.JournalEntries;
 
+import javax.swing.*;
 
 import java.io.*;
 import java.net.*;
@@ -37,7 +37,7 @@ public static void main(String[] args) {
 //PN = JOptionPane.showInputDialog( "Personalnumber");
 	
 	JFileChooser fc = new JFileChooser();
-	File F = new File("C:/");
+	File F = new File("/Users");
 	File NameDir, NamePath;
 	int Checker;
 	fc.setCurrentDirectory(F);
@@ -48,13 +48,25 @@ public static void main(String[] args) {
 		NamePath = fc.getSelectedFile();
 		
 		PW = JOptionPane.showInputDialog( "Passward");
+		String Path2 = NamePath.getAbsolutePath();
+		System.out.println(Path2);
+		String Path3 = Path2.replaceFirst("truststore", "keystore");
+		System.out.println(Path3);
 		
 	}
 	
+//	JFileChooser fc = new JFileChooser();
+//	fc.setDialogTitle("Choose Keystore to use");
+//	int returnVal = fc.showOpenDialog(null);
+//	File keystore = fc.getSelectedFile();
+//	String path = keystore.getAbsolutePath();
+//	System.out.println("Choosen path for KeyStore = " + path);
+
+//	ks.load(new FileInputStream(path), password);
 	
 	
 //	File truststore = fc.getSelectedFile();
-	// String path2 = truststore.getAbsolutePath();
+	// 
 	
 	
 	//PW = JOptionPane.showInputDialog( "Password");	
