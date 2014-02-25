@@ -37,10 +37,24 @@ public static void main(String[] args) {
 //PN = JOptionPane.showInputDialog( "Personalnumber");
 	
 	JFileChooser fc = new JFileChooser();
+	File F = new File("C:/");
+	File NameDir, NamePath;
+	int Checker;
+	fc.setCurrentDirectory(F);
+	Checker= fc.showOpenDialog(null);
 	fc.setDialogTitle("Choose Truststore to use");
-	int returnVal2 = fc.showOpenDialog(null);
-	File truststore = fc.getSelectedFile();
-	String path2 = truststore.getAbsolutePath();
+	if(Checker == JFileChooser.APPROVE_OPTION){
+		NameDir = fc.getCurrentDirectory();
+		NamePath = fc.getSelectedFile();
+		
+		PW = JOptionPane.showInputDialog( "Passward");
+		
+	}
+	
+	
+	
+//	File truststore = fc.getSelectedFile();
+	// String path2 = truststore.getAbsolutePath();
 	
 	
 	//PW = JOptionPane.showInputDialog( "Password");	
