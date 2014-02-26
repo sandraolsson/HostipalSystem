@@ -29,11 +29,4 @@ public class PatientSender {
 		return delete;
 	}
 
-	public String getOrder() {
-		return order;
-	}
-
-	public String getParameter() {
-		return parameter;
-	}
 }

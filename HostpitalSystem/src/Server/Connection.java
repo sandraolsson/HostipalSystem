@@ -23,31 +23,32 @@ public class Connection implements Runnable {
 			// Here should the user choose a file with JFilechooser of the
 			// PatientList;
 			
-			System.out.println("Now we want you to choose you saved PatientList");
-			PatientList plist = null;
-			JFileChooser pfc = new JFileChooser();
-			pfc.setDialogTitle("Choose your saved PatientList");
-			int returnVal2 = pfc.showOpenDialog(null);
-			File Patlist = pfc.getSelectedFile();
-			String patPath = Patlist.getAbsolutePath();
-			
-		      try
-		      {
-		         FileInputStream fileIn = new FileInputStream(patPath);
-		         ObjectInputStream in = new ObjectInputStream(fileIn);
-		         plist = (PatientList) in.readObject();
-		         in.close();
-		         fileIn.close();
-		      }catch(IOException i)
-		      {
-		         i.printStackTrace();
-		         return;
-		      }catch(ClassNotFoundException c)
-		      {
-		         System.out.println("Employee class not found");
-		         c.printStackTrace();
-		         return;
-		      }
+//			System.out.println("Now we want you to choose you saved PatientList");
+//			PatientList plist = null;
+//			JFileChooser pfc = new JFileChooser();
+//			pfc.setDialogTitle("Choose your saved PatientList");
+//			int returnVal2 = pfc.showOpenDialog(null);
+//			File Patlist = pfc.getSelectedFile();
+//			String patPath = Patlist.getAbsolutePath();
+//			
+			PatientList plist = new PatientList();
+//		      try
+//		      {
+//		         FileInputStream fileIn = new FileInputStream(patPath);
+//		         ObjectInputStream in = new ObjectInputStream(fileIn);
+//		         plist = (PatientList) in.readObject();
+//		         in.close();
+//		         fileIn.close();
+//		      }catch(IOException i)
+//		      {
+//		         i.printStackTrace();
+//		         return;
+//		      }catch(ClassNotFoundException c)
+//		      {
+//		         System.out.println("Employee class not found");
+//		         c.printStackTrace();
+//		         return;
+//		      }
 			
 			
 			
@@ -64,7 +65,17 @@ public class Connection implements Runnable {
 					+ subject);
 			System.out.println(numConnectedClients
 					+ " concurrent connection(s)\n");
-
+			
+			
+			String userinfo[] = subject.split(":");
+			String pnbr = userinfo[0];
+			String div = userinfo[1];
+			int level = Integer.parseInt(userinfo[2]);
+			CurrentUser.instance().loginAs(pnbr, level, div);
+			System.out.println("Client Pnbr : " + pnbr);
+			System.out.println("Client Division : " + div);
+			System.out.println("Client Level : " + ((Integer)level).toString());
+			
 			PrintWriter out = null;
 			BufferedReader in = null;
 			out = new PrintWriter(socket.getOutputStream(), true);
@@ -103,7 +114,7 @@ public class Connection implements Runnable {
 
 		System.out.println("\nServer Started\n");
 		// int port = -1;
-		int port = 5000;
+		int port = 5001;
 		if (args.length >= 1) {
 			port = Integer.parseInt(args[0]);
 		}
@@ -136,6 +147,9 @@ public class Connection implements Runnable {
 				JFileChooser fc = new JFileChooser();
 				fc.setDialogTitle("Choose Keystore to use");
 				int returnVal = fc.showOpenDialog(null);
+				if(returnVal != JFileChooser.APPROVE_OPTION){
+					System.exit(0);
+				}
 				File keystore = fc.getSelectedFile();
 				String path = keystore.getAbsolutePath();
 				String path2 = path.replaceFirst("keystore", "truststore");
