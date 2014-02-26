@@ -246,7 +246,7 @@ public class Connector {
 					
 				}else if(knapp == 1){ // Show Patient 
 					String toGet = "get:"+PN;
-					JOptionPane.showMessageDialog(null, "Journalen kommer here" /*JournalEntries.getText()*/);
+					JOptionPane.showMessageDialog(null, "Journalen kommer here \n" + toGet);
 				}
 				
 				}
