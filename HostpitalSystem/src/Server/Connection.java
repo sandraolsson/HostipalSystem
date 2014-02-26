@@ -66,8 +66,8 @@ public class Connection implements Runnable {
 			System.out.println(numConnectedClients
 					+ " concurrent connection(s)\n");
 			
-			
-			String userinfo[] = subject.split(":");
+			String userfact = subject.substring(3,17);
+			String userinfo[] = userfact.split(":");
 			String pnbr = userinfo[0];
 			String div = userinfo[1];
 			int level = Integer.parseInt(userinfo[2]);
