@@ -58,22 +58,22 @@ public class Connector {
     	
     	
         String host = null;
-        //int port = -1;
-        int port = 5000;
+        int port = -1;
+        //int port = 5000;
         for (int i = 0; i < args.length; i++) {
             System.out.println("args[" + i + "] = " + args[i]);
         }
-//        if (args.length < 2) {
-//            System.out.println("USAGE: java client host port");
-//            System.exit(-1);
-//        }
-//        try { /* get input parameters */
-//            host = args[0];
-//            port = Integer.parseInt(args[1]);
-//        } catch (IllegalArgumentException e) {
-//            System.out.println("USAGE: java client host port");
-//            System.exit(-1);
-//        }
+        if (args.length < 2) {
+            System.out.println("USAGE: java client host port");
+            System.exit(-1);
+        }
+        try { /* get input parameters */
+            host = args[0];
+            port = Integer.parseInt(args[1]);
+        } catch (IllegalArgumentException e) {
+            System.out.println("USAGE: java client host port");
+            System.exit(-1);
+        }
 
         try { /* set up a key manager for client authentication */
             SSLSocketFactory factory = null;
@@ -174,7 +174,7 @@ public class Connector {
 		if( UserAndPasswordCorrect){
 
 //		 level = Staff.getLevel(PN);
-		level = 1;
+		level = 2;
 		
 			if (level==1 /*GOV*/){
 				int knapp=1;
