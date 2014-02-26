@@ -15,10 +15,8 @@ import javax.net.ssl.*;
 import javax.security.cert.X509Certificate;
 import javax.swing.JFileChooser;
 
-public class start {
+public class CopyOfstart {
 	
-
-		
 	
 	public static String UN;
 	public static String DV;
@@ -30,7 +28,8 @@ public class start {
 	public static String Entry;
 	public static String nurse;
 	
-	
+
+public static void main(String[] args) {
 	Scanner scan = new Scanner(System.in);	
 
 	JOptionPane.showMessageDialog(null, "Press OK for Login"); 
@@ -197,6 +196,6 @@ UserAndPasswordCorrect= true;
 
 	
  }}
-}
 
-	
+
+	}
