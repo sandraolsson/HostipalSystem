@@ -142,7 +142,7 @@ public class Connection implements Runnable {
 						.getInstance("SunX509");
 				KeyStore ks = KeyStore.getInstance("JKS");
 				KeyStore ts = KeyStore.getInstance("JKS");
-				char[] password = "password".toCharArray();
+				char[] password = "server".toCharArray();
 
 				JFileChooser fc = new JFileChooser();
 				fc.setDialogTitle("Choose Keystore to use");
@@ -165,7 +165,7 @@ public class Connection implements Runnable {
 //				File truststore = fc2.getSelectedFile();
 //				String path2 = truststore.getAbsolutePath();
 //				System.out.println("Choosen path for truststore = " + path);
-				ts.load(new FileInputStream(path2), password); // truststore
+				ts.load(new FileInputStream(path2), "password".toCharArray()); // truststore
 																// password
 																// (storepass)
 				kmf.init(ks, password); // certificate password (keypass)
