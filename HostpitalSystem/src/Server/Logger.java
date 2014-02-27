@@ -15,9 +15,9 @@ public class Logger {
 			if (!file.exists()) {
 				file.createNewFile();
 			}
-
-			fw = new FileWriter(file.getAbsoluteFile());
-			bw = new BufferedWriter(fw);
+			fw = new FileWriter(file);
+			// fw = new FileWriter(file.getAbsoluteFile());
+			// bw = new BufferedWriter(fw);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -25,19 +25,16 @@ public class Logger {
 
 	public void log(String toWrite) {
 		try {
-
-			// if file doesnt exists, we create it
-//			if (!file.exists()) {
-//				file.createNewFile();
-//			}
-
 			StringBuilder sb = new StringBuilder();
-			java.util.Date date= new java.util.Date();
-			sb.append(new Timestamp(date.getTime()) + "/n");
-			sb.append(CurrentUser.instance().getPnbr() + "/n");
-			sb.append(toWrite);
-			bw.write(sb.toString());
-			bw.close();
+			java.util.Date date = new java.util.Date();
+			sb.append(new Timestamp(date.getTime()).toString()
+					+ System.getProperty("line.separator"));
+			sb.append("User:" + CurrentUser.instance().getPnbr()
+					+ System.getProperty("line.separator"));
+			sb.append("Preformed the action: " + toWrite
+					+ System.getProperty("line.separator"));
+			fw.write(sb.toString());
+			fw.flush();
 
 			System.out.println("Logging Done");
 

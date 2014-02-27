@@ -11,7 +11,7 @@ public class Journal implements java.io.Serializable {
 	}
 
 	public void update(String newText) {
-		if (text.isEmpty()) {
+		if (text == null || text.isEmpty()) {
 			text = newText;
 		} else {
 			text = text + newText;

@@ -32,6 +32,10 @@ public class Connection implements Runnable {
 //			String patPath = Patlist.getAbsolutePath();
 //			
 			PatientList plist = new PatientList();
+			//CurrentUser.instance().loginAs("999999999", 2, "o");
+			//plist.addPatient(new Patient("0123456789", "Bo Ek", "o"));
+			//Patient p = plist.getPatient("0123456789").getPatient();
+		//	plist.newJournal("0123456789","Fixat benet", CurrentUser.instance().getPnbr(), "3333333333");
 //		      try
 //		      {
 //		         FileInputStream fileIn = new FileInputStream(patPath);
@@ -72,9 +76,9 @@ public class Connection implements Runnable {
 			String div = userinfo[1];
 			int level = Integer.parseInt(userinfo[2]);
 			CurrentUser.instance().loginAs(pnbr, level, div);
-			System.out.println("Client Pnbr : " + pnbr);
-			System.out.println("Client Division : " + div);
-			System.out.println("Client Level : " + ((Integer)level).toString());
+			System.out.println("Client Pnbr : " + CurrentUser.instance().getPnbr());
+			System.out.println("Client Division : " + CurrentUser.instance().getDivision());
+			System.out.println("Client Level : " + CurrentUser.instance().getLevel());
 			
 			PrintWriter out = null;
 			BufferedReader in = null;
@@ -87,9 +91,9 @@ public class Connection implements Runnable {
 			String clientMsg = null;
 			while ((clientMsg = in.readLine()) != null) {
 				String toSend = serverParser.parse(clientMsg);
-
 				out.println(toSend);
 				out.flush();
+				
 				System.out.println("done\n");
 			}
 			in.close();

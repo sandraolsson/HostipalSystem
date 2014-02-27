@@ -45,4 +45,7 @@ public class Patient implements java.io.Serializable{
 	public Journal getJournal(){
 		return journal;
 	}
+	public void addStaff(String pnbr){
+		staff.add(pnbr);
+	}
 }

@@ -13,14 +13,15 @@ public class PatientList implements java.io.Serializable {
 	public PatientList() {
 		allPatient = new HashMap<String, Patient>();
 		log = new Logger();
+
 	}
 
 	public void addPatient(Patient p) {
 		if (CurrentUser.instance().getLevel() == 2) {
+			p.addStaff(CurrentUser.instance().getPnbr());
 			allPatient.put(p.getPnbr(), p);
 			log.log("Added patient: " + p.getPnbr());
-		}
-		else {
+		} else {
 			log.log("Failed to add patient: " + p.getPnbr());
 		}
 	}
@@ -46,12 +47,11 @@ public class PatientList implements java.io.Serializable {
 	}
 
 	public void deletePatient(String pNbr) {
-		if (CurrentUser.instance().getLevel() == 1){
+		if (CurrentUser.instance().getLevel() == 1) {
 			allPatient.remove(pNbr);
-		log.log("Deleted patient: " + pNbr);
-		}
-		else{
-			log.log("Failed to delete patient: " +pNbr);
+			log.log("Deleted patient: " + pNbr);
+		} else {
+			log.log("Failed to delete patient: " + pNbr);
 		}
 	}
 
@@ -70,6 +70,8 @@ public class PatientList implements java.io.Serializable {
 		if (p.isTreatedBy(CurrentUser.instance().getPnbr())) {
 			p.addJournal(text, docPnbr, nursePnbr);
 			log.log("Added a new journal to patient: " + patientPnbr);
+		} else {
+			log.log(("Failed to add journal to patient: " + patientPnbr));
 		}
 	}
 }

@@ -49,9 +49,11 @@ public class ServerParser {
 			list.addPatient(p);
 			break;
 		case "njr":
-			PatientSender psender = list.getPatient(input[1]);
-			Patient pa = psender.getPatient();
-			pa.addJournal(input[2], CurrentUser.instance().getPnbr(), input[3]);
+			list.newJournal(input[1], input[2], CurrentUser.instance().getPnbr(), input[3]);
+			
+//			PatientSender psender = list.getPatient(input[1]);
+//			Patient pa = psender.getPatient();
+//			pa.addJournal(input[2], CurrentUser.instance().getPnbr(), input[3]);
 			break;
 			
 		}
@@ -61,7 +63,7 @@ public class ServerParser {
 			return toSend;
 		}
 		else{
-			return null;
+			return "Done";
 		}
 		
 	}

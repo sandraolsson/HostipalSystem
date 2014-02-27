@@ -52,7 +52,7 @@ public class Client {
 				Scanner scan = new Scanner(System.in);
 				System.out.println("Input password for keystore/trustsore");
 				String pass = scan.nextLine();
-				scan.close();
+//				scan.close();
 				char[] password = pass.toCharArray();
 
 				
@@ -103,7 +103,7 @@ public class Client {
 			System.out.println("socket after handshake:\n" + socket + "\n");
 			System.out.println("secure connection established\n\n");
 			
-		//	Scanner read = new Scanner(System.in);
+//			Scanner read = new Scanner(System.in);
 			BufferedReader read = new BufferedReader(new InputStreamReader(
 					System.in));
 			PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
@@ -112,8 +112,8 @@ public class Client {
 			String msg;
 			for (;;) {
 				System.out.print(">");
-				msg = "get:9988771234";
-				//msg = read.readLine();
+//				msg = "get:0123456789";
+				msg = read.readLine();
 				if (msg.equalsIgnoreCase("quit")) {
 					break;
 				}
