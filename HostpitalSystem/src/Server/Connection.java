@@ -20,43 +20,6 @@ public class Connection implements Runnable {
 
 	public void run() {
 		try {
-			// Here should the user choose a file with JFilechooser of the
-			// PatientList;
-			
-//			System.out.println("Now we want you to choose you saved PatientList");
-//			PatientList plist = null;
-//			JFileChooser pfc = new JFileChooser();
-//			pfc.setDialogTitle("Choose your saved PatientList");
-//			int returnVal2 = pfc.showOpenDialog(null);
-//			File Patlist = pfc.getSelectedFile();
-//			String patPath = Patlist.getAbsolutePath();
-//			
-			PatientList plist = new PatientList();
-			//CurrentUser.instance().loginAs("999999999", 2, "o");
-			//plist.addPatient(new Patient("0123456789", "Bo Ek", "o"));
-			//Patient p = plist.getPatient("0123456789").getPatient();
-		//	plist.newJournal("0123456789","Fixat benet", CurrentUser.instance().getPnbr(), "3333333333");
-//		      try
-//		      {
-//		         FileInputStream fileIn = new FileInputStream(patPath);
-//		         ObjectInputStream in = new ObjectInputStream(fileIn);
-//		         plist = (PatientList) in.readObject();
-//		         in.close();
-//		         fileIn.close();
-//		      }catch(IOException i)
-//		      {
-//		         i.printStackTrace();
-//		         return;
-//		      }catch(ClassNotFoundException c)
-//		      {
-//		         System.out.println("Employee class not found");
-//		         c.printStackTrace();
-//		         return;
-//		      }
-			
-			
-			
-
 			SSLSocket socket = (SSLSocket) serverSocket.accept();
 			newListener();
 			SSLSession session = socket.getSession();
@@ -69,31 +32,34 @@ public class Connection implements Runnable {
 					+ subject);
 			System.out.println(numConnectedClients
 					+ " concurrent connection(s)\n");
-			
-			String userfact = subject.substring(3,17);
+
+			String userfact = subject.substring(3, 17);
 			String userinfo[] = userfact.split(":");
 			String pnbr = userinfo[0];
 			String div = userinfo[1];
 			int level = Integer.parseInt(userinfo[2]);
 			CurrentUser.instance().loginAs(pnbr, level, div);
-			System.out.println("Client Pnbr : " + CurrentUser.instance().getPnbr());
-			System.out.println("Client Division : " + CurrentUser.instance().getDivision());
-			System.out.println("Client Level : " + CurrentUser.instance().getLevel());
-			
+			System.out.println("Client Pnbr : "
+					+ CurrentUser.instance().getPnbr());
+			System.out.println("Client Division : "
+					+ CurrentUser.instance().getDivision());
+			System.out.println("Client Level : "
+					+ CurrentUser.instance().getLevel());
+
 			PrintWriter out = null;
 			BufferedReader in = null;
 			out = new PrintWriter(socket.getOutputStream(), true);
 			in = new BufferedReader(new InputStreamReader(
 					socket.getInputStream()));
 
-			ServerParser serverParser = new ServerParser(plist);
+			ServerParser serverParser = new ServerParser();
 
 			String clientMsg = null;
 			while ((clientMsg = in.readLine()) != null) {
 				String toSend = serverParser.parse(clientMsg);
 				out.println(toSend);
 				out.flush();
-				
+
 				System.out.println("done\n");
 			}
 			in.close();
@@ -117,8 +83,7 @@ public class Connection implements Runnable {
 	public static void main(String args[]) {
 
 		System.out.println("\nServer Started\n");
-		 int port = -1;
-		//int port = 5001;
+		int port = -1;
 		if (args.length >= 1) {
 			port = Integer.parseInt(args[0]);
 		}
@@ -146,12 +111,13 @@ public class Connection implements Runnable {
 						.getInstance("SunX509");
 				KeyStore ks = KeyStore.getInstance("JKS");
 				KeyStore ts = KeyStore.getInstance("JKS");
-				char[] password = "server".toCharArray();
-
+				char[] kspassword = "server".toCharArray();
+				char[] tspassword = "password".toCharArray();
+				
 				JFileChooser fc = new JFileChooser();
 				fc.setDialogTitle("Choose Keystore to use");
 				int returnVal = fc.showOpenDialog(null);
-				if(returnVal != JFileChooser.APPROVE_OPTION){
+				if (returnVal != JFileChooser.APPROVE_OPTION) {
 					System.exit(0);
 				}
 				File keystore = fc.getSelectedFile();
@@ -159,20 +125,14 @@ public class Connection implements Runnable {
 				String path2 = path.replaceFirst("keystore", "truststore");
 				System.out.println("Choosen path for KeyStore = " + path);
 				System.out.println("Choosen path for TrustStore = " + path2);
-				ks.load(new FileInputStream(path), password); // keystore
+				ks.load(new FileInputStream(path), kspassword); // keystore
 																// password
 																// (storepass)
 
-//				JFileChooser fc2 = new JFileChooser();
-//				fc2.setDialogTitle("Choose Truststore to use");
-//				int returnVal2 = fc2.showOpenDialog(null);
-//				File truststore = fc2.getSelectedFile();
-//				String path2 = truststore.getAbsolutePath();
-//				System.out.println("Choosen path for truststore = " + path);
-				ts.load(new FileInputStream(path2), "password".toCharArray()); // truststore
-																// password
-																// (storepass)
-				kmf.init(ks, password); // certificate password (keypass)
+				ts.load(new FileInputStream(path2), tspassword); // truststore
+				// password
+				// (storepass)
+				kmf.init(ks, kspassword); // certificate password (keypass)
 				tmf.init(ts); // possible to use keystore as truststore here
 				ctx.init(kmf.getKeyManagers(), tmf.getTrustManagers(), null);
 				ssf = ctx.getServerSocketFactory();

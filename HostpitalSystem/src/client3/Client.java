@@ -1,6 +1,5 @@
 package client3;
 
-import java.net.*;
 import java.io.*;
 
 import javax.net.ssl.*;
@@ -8,17 +7,8 @@ import javax.security.cert.X509Certificate;
 import javax.swing.JFileChooser;
 
 import java.security.KeyStore;
-import java.security.cert.*;
 import java.util.Scanner;
 
-/*
- * This example shows how to set up a key manager to perform client
- * authentication.
- *
- * This program assumes that the client is not inside a firewall.
- * The application can be modified to connect to a server outside
- * the firewall by following SSLSocketClientWithTunneling.java.
- */
 public class Client {
 
 	public static void main(String[] args) throws Exception {
@@ -42,7 +32,7 @@ public class Client {
 		try { /* set up a key manager for client authentication */
 			SSLSocketFactory factory = null;
 			try {
-				
+
 				JFileChooser fc = new JFileChooser();
 				fc.setDialogTitle("Choose Keystore to use");
 				int returnVal = fc.showOpenDialog(null);
@@ -52,10 +42,9 @@ public class Client {
 				Scanner scan = new Scanner(System.in);
 				System.out.println("Input password for keystore/trustsore");
 				String pass = scan.nextLine();
-//				scan.close();
+				// scan.close();
 				char[] password = pass.toCharArray();
 
-				
 				File keystore = fc.getSelectedFile();
 				String path = keystore.getAbsolutePath();
 				String path2 = path.replaceFirst("keystore", "truststore");
@@ -102,8 +91,7 @@ public class Client {
 							+ subject + "\n");
 			System.out.println("socket after handshake:\n" + socket + "\n");
 			System.out.println("secure connection established\n\n");
-			
-//			Scanner read = new Scanner(System.in);
+
 			BufferedReader read = new BufferedReader(new InputStreamReader(
 					System.in));
 			PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
@@ -112,7 +100,6 @@ public class Client {
 			String msg;
 			for (;;) {
 				System.out.print(">");
-//				msg = "get:0123456789";
 				msg = read.readLine();
 				if (msg.equalsIgnoreCase("quit")) {
 					break;

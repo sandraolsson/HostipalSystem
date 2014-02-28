@@ -1,10 +1,7 @@
 package Server;
 
-public class Journal implements java.io.Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class Journal {
+	
 	private String text;
 
 	public Journal() {
@@ -14,7 +11,7 @@ public class Journal implements java.io.Serializable {
 		if (text == null || text.isEmpty()) {
 			text = newText;
 		} else {
-			text = text + newText;
+			text = text + " - " + newText;
 		}
 	}
 

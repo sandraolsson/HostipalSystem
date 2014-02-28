@@ -2,11 +2,12 @@ package Server;
 
 import java.util.HashMap;
 
-public class PatientList implements java.io.Serializable {
+public class PatientList {
+    private static PatientList instance;
+
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
 	HashMap<String, Patient> allPatient;
 	Logger log;
 
@@ -39,7 +40,7 @@ public class PatientList implements java.io.Serializable {
 				|| CurrentUser.instance().getPnbr() == p.getPnbr()) {
 			read = true;
 		}
-		delete = (CurrentUser.instance().getLevel() == 1);
+		delete = read = (CurrentUser.instance().getLevel() == 1);
 
 		sender = new PatientSender(p, read, edit, delete);
 		log.log("Accesed patient: " + p.getPnbr());
@@ -74,4 +75,9 @@ public class PatientList implements java.io.Serializable {
 			log.log(("Failed to add journal to patient: " + patientPnbr));
 		}
 	}
+	 public static PatientList instance() {
+	        if (instance == null)
+	            instance = new PatientList();
+	        return instance;
+	    }
 }

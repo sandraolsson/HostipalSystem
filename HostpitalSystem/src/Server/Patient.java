@@ -3,14 +3,8 @@ package Server;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-public class Patient implements java.io.Serializable{
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	/**
-	 * 
-	 */
+public class Patient{
+	
 	private String pNbr, name, division;
 	private Journal journal;
 	private HashSet<String> staff;

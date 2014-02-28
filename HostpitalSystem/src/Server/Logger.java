@@ -16,8 +16,6 @@ public class Logger {
 				file.createNewFile();
 			}
 			fw = new FileWriter(file);
-			// fw = new FileWriter(file.getAbsoluteFile());
-			// bw = new BufferedWriter(fw);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -26,8 +24,7 @@ public class Logger {
 	public void log(String toWrite) {
 		try {
 			StringBuilder sb = new StringBuilder();
-			java.util.Date date = new java.util.Date();
-			sb.append(new Timestamp(date.getTime()).toString()
+			sb.append(new Timestamp(System.currentTimeMillis())
 					+ System.getProperty("line.separator"));
 			sb.append("User:" + CurrentUser.instance().getPnbr()
 					+ System.getProperty("line.separator"));

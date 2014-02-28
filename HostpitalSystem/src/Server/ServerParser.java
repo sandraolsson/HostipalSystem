@@ -3,11 +3,10 @@ package Server;
 public class ServerParser {
 	PatientList list;
 
-	public ServerParser(PatientList list) {
-		this.list = list;
+	public ServerParser() {
+		list = PatientList.instance();
 	}
 
-	
 	public String parse(String in) {
 		String input[] = in.split(":");
 
@@ -16,9 +15,11 @@ public class ServerParser {
 		}
 		StringBuilder sb = new StringBuilder();
 		switch (input[0]) {
-		
+
 		case "get":
 			PatientSender ps = list.getPatient(input[1]);
+			if (ps == null)
+				break;
 			Patient pat = ps.getPatient();
 			sb.append(pat.getPnbr() + ":");
 			sb.append(pat.getName() + ":");
@@ -43,28 +44,23 @@ public class ServerParser {
 		case "del":
 			list.deletePatient(input[1]);
 			break;
-			
+
 		case "add":
-			Patient p = new Patient(input[1],input[2],input[3]);
+			Patient p = new Patient(input[1], input[2], input[3]);
 			list.addPatient(p);
 			break;
 		case "njr":
-			list.newJournal(input[1], input[2], CurrentUser.instance().getPnbr(), input[3]);
-			
-//			PatientSender psender = list.getPatient(input[1]);
-//			Patient pa = psender.getPatient();
-//			pa.addJournal(input[2], CurrentUser.instance().getPnbr(), input[3]);
+			list.newJournal(input[1], input[2], CurrentUser.instance()
+					.getPnbr(), input[3]);
 			break;
-			
+
 		}
-		
-		String toSend = sb.toString();
-		if(!toSend.isEmpty()){
-			return toSend;
+
+		if (sb.length() > 0) {
+			return sb.toString();
+		} else {
+			return "Command executed";
 		}
-		else{
-			return "Done";
-		}
-		
+
 	}
 }
