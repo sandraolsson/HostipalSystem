@@ -3,7 +3,7 @@ package Server;
 import java.util.HashMap;
 
 public class PatientList {
-    private static PatientList instance;
+	private static PatientList instance;
 
 	/**
 	 * 
@@ -75,9 +75,10 @@ public class PatientList {
 			log.log(("Failed to add journal to patient: " + patientPnbr));
 		}
 	}
-	 public static PatientList instance() {
-	        if (instance == null)
-	            instance = new PatientList();
-	        return instance;
-	    }
+
+	public static PatientList instance() {
+		if (instance == null)
+			instance = new PatientList();
+		return instance;
+	}
 }

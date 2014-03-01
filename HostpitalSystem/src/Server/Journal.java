@@ -1,7 +1,7 @@
 package Server;
 
 public class Journal {
-	
+
 	private String text;
 
 	public Journal() {

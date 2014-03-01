@@ -113,7 +113,7 @@ public class Connection implements Runnable {
 				KeyStore ts = KeyStore.getInstance("JKS");
 				char[] kspassword = "server".toCharArray();
 				char[] tspassword = "password".toCharArray();
-				
+
 				JFileChooser fc = new JFileChooser();
 				fc.setDialogTitle("Choose Keystore to use");
 				int returnVal = fc.showOpenDialog(null);
